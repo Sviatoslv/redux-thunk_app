@@ -5,7 +5,7 @@ import {
   getPostsThunkCreator,
   getCommentsThunkCreator,
   getUsersThunkCreator
-} from '../store/actions';
+} from '../../store/actionCreators';
 
 import {
   posts,
@@ -14,11 +14,11 @@ import {
   commentsIsLoaded,
   users,
   usersIsLoaded
-} from '../store/store';
+} from '../../store/store';
 
 import './LandingPage.css';
-import ShowPath from './ShowPath';
-import List from './List';
+import PathViewer from '../PathViewer/PathViewer';
+import List from '../List/List';
 
 const LandingPage = ({
     posts=[],
@@ -47,7 +47,7 @@ const LandingPage = ({
         <List list={users} isLoaded={usersIsLoaded} />
       </div>
 
-      <ShowPath />
+      <PathViewer />
     </div>
 )}
 

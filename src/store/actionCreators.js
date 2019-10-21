@@ -10,15 +10,21 @@ const setUsers = value => ({ type: SET_USERS, value });
 
 export const getPostsThunkCreator = () => async (dispatch) => {
   const posts = await getPosts();
-  dispatch(setPosts(posts));
+  setTimeout(() => {
+    dispatch(setPosts(posts));
+  }, 1000)
 };
 
 export const getCommentsThunkCreator = () => async (dispatch) => {
   const comments = await getComments();
-  dispatch(setComments(comments));
+  setTimeout(() => {
+    dispatch(setComments(comments));
+  }, 4000)
 };
 
 export const getUsersThunkCreator = () => async (dispatch) => {
   const users = await getUsers();
-  dispatch(setUsers(users));
+  setTimeout(() => {
+    dispatch(setUsers(users));
+  }, 2000)
 };

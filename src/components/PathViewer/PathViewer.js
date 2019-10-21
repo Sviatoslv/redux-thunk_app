@@ -1,7 +1,7 @@
 import React, { useState }  from 'react';
 import { createBrowserHistory } from 'history';
 
-const ShowPath = () => {
+const PathViewer = () => {
   const [isPathVisibale, setIsPathVisibale] = useState(false);
   const history = createBrowserHistory();
   const location = history.location;
@@ -19,4 +19,4 @@ const ShowPath = () => {
   )
 }
 
-export default ShowPath;
+export default PathViewer;

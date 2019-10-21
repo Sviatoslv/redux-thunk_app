@@ -1,4 +1,4 @@
-import {SET_COMMENTS} from '../actions';
+import {SET_COMMENTS} from '../actionCreators';
 
 const initialState = {
   comments: [],

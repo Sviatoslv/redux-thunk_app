@@ -2,10 +2,10 @@ import React from 'react';
 import './App.css';
 import { Switch, Route } from "react-router-dom";
 
-import Header from './components/Header';
-import LandingPage from './components/LandingPage';
-import ItemPage from './components/ItemPage';
-import ListPage from './components/ListPage';
+import Header from './components/Header/Header';
+import LandingPage from './components/LandingPage/LandingPage';
+import ItemPage from './components/ItemPage/ItemPage';
+import ListPage from './components/ListPage/ListPage';
 
 function App() {
   return (

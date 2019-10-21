@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getPostsThunkCreator } from '../store/actions';
-import { posts, postsIsLoaded } from '../store/store';
+import { getPostsThunkCreator } from '../../store/actionCreators';
+import { posts, postsIsLoaded } from '../../store/store';
 
-import ShowPath from './ShowPath';
-import List from './List';
+import PathViewer from '../PathViewer/PathViewer';
+import List from '../List/List';
 
 const ListPage = ({
     posts=[],
@@ -19,7 +19,7 @@ const ListPage = ({
   return (
     <div>
       <h1>List Page</h1>
-      <ShowPath />
+      <PathViewer />
 
       <List
         list={posts}
