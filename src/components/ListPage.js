@@ -1,12 +1,40 @@
-import React from 'react';
-import ShowPath from './ShowPath';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 
-const ListPage = () => {
+import { getPostsThunkCreator } from '../store/actions';
+import { posts, postsIsLoaded } from '../store/store';
+
+import ShowPath from './ShowPath';
+import List from './List';
+
+const ListPage = ({
+    posts=[],
+    postsIsLoaded,
+    getPostsThunkCreator,
+  }) => {
+  useEffect(() => {
+    getPostsThunkCreator();
+  }, []);
+
   return (
     <div>
       <h1>List Page</h1>
       <ShowPath />
+
+      <List
+        list={posts}
+        isLoaded={postsIsLoaded}
+      />
     </div>
 )};
 
-export default ListPage;
+const getData = (state) => ({
+  posts: posts(state),
+  postsIsLoaded: postsIsLoaded(state),
+});
+
+const getMethod = {
+  getPostsThunkCreator,
+};
+
+export default connect(getData, getMethod)(ListPage);
