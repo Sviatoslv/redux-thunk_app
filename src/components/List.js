@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
+import './List.css';
 
 const List = ({ list, isLoaded }) => (
-  <div style={{maxHeight: '300px', minWidth: '200px', maxWidth: '300px', overflow: 'scroll'}}>
+  <div className="List">
     {isLoaded
       ? 
       <ul>
