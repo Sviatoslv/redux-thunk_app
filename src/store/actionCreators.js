@@ -13,10 +13,10 @@ export const getPostsThunkCreator = () => (dispatch) => {
     .then(posts => setTimeout(() => {
         dispatch(setPosts(posts))
       }, 1000))
-    .catch(() => []);
+    .catch(() => dispatch(setPosts([])));
 };
 
-export const getCommentsThunkCreator = () => async (dispatch) => {
+export const getCommentsThunkCreator = () => (dispatch) => {
   getComments()
     .then(comments => setTimeout(() => {
         dispatch(setComments(comments))
@@ -24,10 +24,10 @@ export const getCommentsThunkCreator = () => async (dispatch) => {
     .catch(() => []);
 };
 
-export const getUsersThunkCreator = () => async (dispatch) => {
+export const getUsersThunkCreator = () => (dispatch) => {
   getUsers()
     .then(users => setTimeout(() => {
         dispatch(setUsers(users))
-      }, 3000))
+      }, 2000))
     .catch(() => []);
 };

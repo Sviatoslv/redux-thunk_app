@@ -1,7 +1,7 @@
 const API_URL = 'https://jsonplaceholder.typicode.com';
 
 export const getPosts = async () => {
-  const posts = await fetch(`${API_URL}/posts`)
+  const posts = await fetch(`${API_URL}/post`)
     .catch((e)=> {
       return []
     });
