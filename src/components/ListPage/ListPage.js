@@ -6,7 +6,6 @@ import {
   getfilteredPostsThunkCreator,
 } from '../../store/actionCreators';
 import { posts, postsIsLoaded } from '../../store/store';
-import { history } from '../../store/store';
 
 import List from '../List/List';
 import PathViewer from '../PathViewer/PathViewer';
@@ -22,7 +21,6 @@ const ListPage = ({
 
   useEffect(() => {
     getPostsThunkCreator();
-    console.log('asdfasfd', history);
   }, []);
 
   return (
