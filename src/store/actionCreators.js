@@ -1,4 +1,4 @@
-import {getPosts, getComments, getUsers} from '../api/api';
+import {getPosts, getComments, getUsers, getFilteredPosts} from '../api/api';
 
 export const SET_POSTS = 'SET_POSTS';
 export const SET_COMMENTS = 'SET_COMMENTS';
@@ -13,6 +13,14 @@ export const getPostsThunkCreator = () => (dispatch) => {
     .then(posts => setTimeout(() => {
         dispatch(setPosts(posts))
       }, 1000))
+    .catch(() => dispatch(setPosts([])));
+};
+
+export const getfilteredPostsThunkCreator = (searchvalue) => (dispatch) => {
+  getFilteredPosts(searchvalue)
+    .then(filteredPosts => setTimeout(() => {
+        dispatch(setPosts(filteredPosts))
+      }, 300))
     .catch(() => dispatch(setPosts([])));
 };
 

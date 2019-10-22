@@ -9,6 +9,19 @@ export const getPosts = async () => {
   return posts.json();
 };
 
+export const getFilteredPosts = async (searchvalue) => {
+  const posts = await fetch(`${API_URL}/posts`)
+    .then(posts => posts.json())
+    .then(posts => posts.filter(post => {
+      return post.title.includes(searchvalue)
+    }))
+    .catch((e)=> {
+      return []
+    });
+
+  return posts;
+};
+
 export const getComments = async () => {
   const comments = await fetch(`${API_URL}/photoss`)
     .catch((e)=> {
