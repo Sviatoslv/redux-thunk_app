@@ -1,7 +1,6 @@
 import {getPosts, getComments, getUsers, getFilteredPosts} from '../api/api';
 
 export const SET_POSTS = 'SET_POSTS';
-export const FILTER_POSTS = 'FILTER_POSTS';
 export const SET_COMMENTS = 'SET_COMMENTS';
 export const SET_USERS = 'SET_USERS';
 
