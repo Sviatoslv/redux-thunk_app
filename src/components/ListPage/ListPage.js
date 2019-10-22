@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getPostsThunkCreator, getfilteredPostsThunkCreator } from '../../store/actionCreators';
+import {
+  getPostsThunkCreator,
+  getfilteredPostsThunkCreator,
+} from '../../store/actionCreators';
 import { posts, postsIsLoaded } from '../../store/store';
+import { history } from '../../store/store';
 
 import List from '../List/List';
 import PathViewer from '../PathViewer/PathViewer';
@@ -18,8 +22,8 @@ const ListPage = ({
 
   useEffect(() => {
     getPostsThunkCreator();
+    console.log('asdfasfd', history);
   }, []);
-
 
   return (
     <div>
@@ -38,6 +42,7 @@ const ListPage = ({
         />
         
         <p>{queryValue}</p>
+
         <List
           list={posts}
           isLoaded={postsIsLoaded}

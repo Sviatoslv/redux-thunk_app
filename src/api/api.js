@@ -3,7 +3,7 @@ const API_URL = 'https://jsonplaceholder.typicode.com';
 export const getPosts = async () => {
   const posts = await fetch(`${API_URL}/posts`)
     .catch((e)=> {
-      return []
+      return [];
     });
 
   return posts.json();
@@ -12,11 +12,11 @@ export const getPosts = async () => {
 export const getFilteredPosts = async (searchvalue) => {
   const posts = await fetch(`${API_URL}/posts`)
     .then(posts => posts.json())
-    .then(posts => posts.filter(post => {
-      return post.title.includes(searchvalue)
-    }))
+    .then(posts => posts.filter(post =>
+       post.title.includes(searchvalue)
+    ))
     .catch((e)=> {
-      return []
+      return [];
     });
 
   return posts;
@@ -25,7 +25,7 @@ export const getFilteredPosts = async (searchvalue) => {
 export const getComments = async () => {
   const comments = await fetch(`${API_URL}/photoss`)
     .catch((e)=> {
-      return []
+      return [];
     });
 
   return comments.json();
@@ -34,7 +34,7 @@ export const getComments = async () => {
 export const getUsers = async () => {
   const users = await fetch(`${API_URL}/users`)
     .catch((e)=> {
-      return []
+      return [];
     });
 
   return users.json();
