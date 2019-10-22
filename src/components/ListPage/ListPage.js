@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import { getPostsThunkCreator, getfilteredPostsThunkCreator } from '../../store/actionCreators';
+import {
+  getPostsThunkCreator,
+  getfilteredPostsThunkCreator,
+} from '../../store/actionCreators';
 import { posts, postsIsLoaded } from '../../store/store';
 
 import List from '../List/List';
@@ -20,7 +23,6 @@ const ListPage = ({
     getPostsThunkCreator();
   }, []);
 
-
   return (
     <div>
       <h1>List Page</h1>
@@ -38,6 +40,7 @@ const ListPage = ({
         />
         
         <p>{queryValue}</p>
+
         <List
           list={posts}
           isLoaded={postsIsLoaded}
