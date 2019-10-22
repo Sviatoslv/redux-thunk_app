@@ -6,7 +6,6 @@ import Header from './components/Header/Header';
 import LandingPage from './components/LandingPage/LandingPage';
 import ItemPage from './components/ItemPage/ItemPage';
 import ListPage from './components/ListPage/ListPage';
-import PathViewer from './components/PathViewer/PathViewer';
 
 function App() {
   return (
@@ -18,8 +17,6 @@ function App() {
         <Route path="/list" component={ListPage} />
         <Route path="/item" component={ItemPage} />
       </Switch>
-
-      <PathViewer />
     </div>
   );
 }

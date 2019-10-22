@@ -1,10 +1,7 @@
 import React, { useState }  from 'react';
-import { createBrowserHistory } from 'history';
 
-const PathViewer = () => {
+const PathViewer = ({ pathname }) => {
   const [isPathVisibale, setIsPathVisibale] = useState(false);
-  const history = createBrowserHistory();
-  const location = history.location;
   
   return (
     <>
@@ -14,7 +11,7 @@ const PathViewer = () => {
         {isPathVisibale ? 'Hide' : 'Show'} current path
       </button>
 
-      {isPathVisibale && <p>Current path is '{location.pathname}'</p>}
+      {isPathVisibale && <p>Current path is '{pathname}'</p>}
     </>
   )
 }

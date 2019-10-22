@@ -18,6 +18,7 @@ import {
 
 import './LandingPage.css';
 import List from '../List/List';
+import PathViewer from '../PathViewer/PathViewer';
 
 const LandingPage = ({
     posts=[],
@@ -29,6 +30,7 @@ const LandingPage = ({
     getPostsThunkCreator,
     getCommentsThunkCreator,
     getUsersThunkCreator,
+    pathname,
   }) => {
   useEffect(() => {
     getPostsThunkCreator();
@@ -39,6 +41,8 @@ const LandingPage = ({
   return (
     <div>
       <h1>Landing Page</h1>
+
+      <PathViewer pathname={pathname}/>
 
       <div className='lists'>
         <List list={posts} isLoaded={postsIsLoaded} />
@@ -55,6 +59,7 @@ const getData = (state) => ({
   commentsIsLoaded: commentsIsLoaded(state),
   users: users(state),
   usersIsLoaded: usersIsLoaded(state),
+  pathname: state.router.location.pathname,
 });
 
 const getMethod = {
