@@ -1,7 +1,7 @@
 const API_URL = 'https://jsonplaceholder.typicode.com';
 
 export const getPosts = async () => {
-  const posts = await fetch(`${API_URL}/post`)
+  const posts = await fetch(`${API_URL}/posts`)
     .catch((e)=> {
       return []
     });
@@ -10,7 +10,7 @@ export const getPosts = async () => {
 };
 
 export const getComments = async () => {
-  const comments = await fetch(`${API_URL}/photos`)
+  const comments = await fetch(`${API_URL}/photoss`)
     .catch((e)=> {
       return []
     });

@@ -17,7 +17,6 @@ import {
 } from '../../store/store';
 
 import './LandingPage.css';
-import PathViewer from '../PathViewer/PathViewer';
 import List from '../List/List';
 
 const LandingPage = ({
@@ -46,8 +45,6 @@ const LandingPage = ({
         <List list={comments} isLoaded={commentsIsLoaded} />
         <List list={users} isLoaded={usersIsLoaded} />
       </div>
-
-      <PathViewer />
     </div>
 )}
 

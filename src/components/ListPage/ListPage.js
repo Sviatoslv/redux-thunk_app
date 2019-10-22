@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { getPostsThunkCreator } from '../../store/actionCreators';
 import { posts, postsIsLoaded } from '../../store/store';
 
-import PathViewer from '../PathViewer/PathViewer';
 import List from '../List/List';
 
 const ListPage = ({
@@ -19,7 +18,6 @@ const ListPage = ({
   return (
     <div>
       <h1>List Page</h1>
-      <PathViewer />
 
       <List
         list={posts}
