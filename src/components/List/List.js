@@ -1,7 +1,7 @@
 import React from 'react';
 import './List.css';
 
-const List = ({ list, isLoaded }) => (
+const List = ({ list=[], isLoaded }) => (
   <div className="List">
     {isLoaded
       ? 
@@ -11,7 +11,7 @@ const List = ({ list, isLoaded }) => (
             {item.name ? item.name : item.title}
           </li>)}
       </ul>
-      : <div class="loader">Loading...</div>
+      : <div className="loader">Loading...</div>
     }
   </div>
 )

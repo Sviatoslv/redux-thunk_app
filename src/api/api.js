@@ -1,19 +1,28 @@
 const API_URL = 'https://jsonplaceholder.typicode.com';
 
 export const getPosts = async () => {
-  const response = await fetch(`${API_URL}/posts`);
-  const posts = response.json();
-  return posts;
+  const posts = await fetch(`${API_URL}/posts`)
+    .catch((e)=> {
+      return []
+    });
+
+  return posts.json();
 };
 
 export const getComments = async () => {
-  const response = await fetch(`${API_URL}/photos`);
-  const comments = response.json();
-  return comments;
+  const comments = await fetch(`${API_URL}/photos`)
+    .catch((e)=> {
+      return []
+    });
+
+  return comments.json();
 };
 
 export const getUsers = async () => {
-  const response = await fetch(`${API_URL}/users`);
-  const users = response.json();
-  return users;
+  const users = await fetch(`${API_URL}/users`)
+    .catch((e)=> {
+      return []
+    });
+
+  return users.json();
 };

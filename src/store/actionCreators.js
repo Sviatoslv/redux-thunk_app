@@ -8,23 +8,26 @@ const setPosts = value => ({ type: SET_POSTS, value });
 const setComments = value => ({ type: SET_COMMENTS, value });
 const setUsers = value => ({ type: SET_USERS, value });
 
-export const getPostsThunkCreator = () => async (dispatch) => {
-  const posts = await getPosts();
-  setTimeout(() => {
-    dispatch(setPosts(posts));
-  }, 1000)
+export const getPostsThunkCreator = () => (dispatch) => {
+  getPosts()
+    .then(posts => setTimeout(() => {
+        dispatch(setPosts(posts))
+      }, 1000))
+    .catch(() => []);
 };
 
 export const getCommentsThunkCreator = () => async (dispatch) => {
-  const comments = await getComments();
-  setTimeout(() => {
-    dispatch(setComments(comments));
-  }, 4000)
+  getComments()
+    .then(comments => setTimeout(() => {
+        dispatch(setComments(comments))
+      }, 3000))
+    .catch(() => []);
 };
 
 export const getUsersThunkCreator = () => async (dispatch) => {
-  const users = await getUsers();
-  setTimeout(() => {
-    dispatch(setUsers(users));
-  }, 2000)
+  getUsers()
+    .then(users => setTimeout(() => {
+        dispatch(setUsers(users))
+      }, 3000))
+    .catch(() => []);
 };
