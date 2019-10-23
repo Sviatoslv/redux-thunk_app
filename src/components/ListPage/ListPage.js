@@ -18,9 +18,10 @@ const ListPage = ({
     pathname,
   }) => {
   const [queryValue, setQueryValue] = useState('');
+  const [isLoaded, setIsLoaded] = useState('');
 
   useEffect(() => {
-    getPostsThunkCreator();
+    getPostsThunkCreator(setIsLoaded);
   }, []);
 
   return (
@@ -43,7 +44,9 @@ const ListPage = ({
 
         <List
           list={posts}
-          isLoaded={postsIsLoaded}
+          isLoaded={isLoaded}
+          getThunkCreator={getPostsThunkCreator}
+          setIsLoaded={setIsLoaded}
         />
       </div>
     </div>
