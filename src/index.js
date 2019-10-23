@@ -7,16 +7,12 @@ import { BrowserRouter } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 
 import App from './App';
-import configureStore, { history } from './store/store';
-
-const store = configureStore();
+import store, { history } from './store/store';
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </ConnectedRouter>
   </Provider>,
   document.getElementById('root')

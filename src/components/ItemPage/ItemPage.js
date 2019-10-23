@@ -1,10 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const ItemPage = () => {
+import PathViewer from '../PathViewer/PathViewer';
+
+const ItemPage = ({ pathname }) => {
   return (
     <div>
       <h1>Item Page</h1>
+
+      <PathViewer pathname={pathname}/>
     </div>
 )}
 
-export default ItemPage;
+const getData = (state) => ({
+  pathname: state.router.location.pathname,
+});
+
+export default connect(getData)(ItemPage);
