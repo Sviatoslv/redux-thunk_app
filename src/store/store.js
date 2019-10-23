@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { connectRouter } from 'connected-react-router';
@@ -25,19 +25,20 @@ const rootReducer = (history) => combineReducers({
   usersList: usersReducer,
 });
 
-const middleware = [thunk, routerMiddleware(history)];
+const middleware = [routerMiddleware(history), thunk];
 const logger = createLogger({ collapsed: true });
 
 if (process.env.NODE_ENV !== 'production') {
   middleware.push(logger);
 }
 
-export default function configureStore(preloadedState) {
-  const store = createStore(
-    rootReducer(history),
-    preloadedState,
-    applyMiddleware(...middleware)
-  );
+const composedEnhancers = compose(
+  applyMiddleware(...middleware),
+)
 
-  return store
-}
+const store = createStore(
+  rootReducer(history),
+  composedEnhancers
+)
+
+export default store
