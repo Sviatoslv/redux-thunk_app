@@ -12,7 +12,6 @@ import PathViewer from '../PathViewer/PathViewer';
 
 const ListPage = ({
     posts=[],
-    postsIsLoaded,
     getPostsThunkCreator,
     getfilteredPostsThunkCreator,
     pathname,
@@ -36,7 +35,7 @@ const ListPage = ({
           value={queryValue}
           onChange={(event) => {
             setQueryValue(event.target.value);
-            getfilteredPostsThunkCreator(event.target.value);
+            getfilteredPostsThunkCreator(event.target.value, setIsLoaded);
           }}
         />
         
