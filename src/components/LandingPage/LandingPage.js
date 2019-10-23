@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -23,19 +23,20 @@ import PathViewer from '../PathViewer/PathViewer';
 const LandingPage = ({
     posts=[],
     comments=[],
-    postsIsLoaded,
-    commentsIsLoaded,
     users=[],
-    usersIsLoaded,
     getPostsThunkCreator,
     getCommentsThunkCreator,
     getUsersThunkCreator,
     pathname,
   }) => {
+  const [postsIsLoaded, setPostsIsLoaded] = useState('');
+  const [commentsIsLoaded, setCommentsIsLoaded] = useState('');
+  const [usersIsLoaded, setUsersIsLoaded] = useState('');
+
   useEffect(() => {
-    getPostsThunkCreator();
-    getCommentsThunkCreator();
-    getUsersThunkCreator();
+    getPostsThunkCreator(setPostsIsLoaded);
+    getCommentsThunkCreator(setCommentsIsLoaded);
+    getUsersThunkCreator(setUsersIsLoaded);
   }, []);
 
   return (
@@ -45,18 +46,33 @@ const LandingPage = ({
       <PathViewer pathname={pathname}/>
 
       <div className='lists'>
-        <List list={posts} isLoaded={postsIsLoaded} />
-        <List list={comments} isLoaded={commentsIsLoaded} />
-        <List list={users} isLoaded={usersIsLoaded} />
+        <List
+          list={posts}
+          isLoaded={postsIsLoaded}
+          getThunkCreator={getPostsThunkCreator}
+          setIsLoaded={setPostsIsLoaded}
+        />
+
+        <List
+          list={comments}
+          isLoaded={commentsIsLoaded}
+          getThunkCreator={getCommentsThunkCreator}
+          setIsLoaded={setCommentsIsLoaded}
+        />
+
+        <List
+          list={users}
+          isLoaded={usersIsLoaded}
+          getThunkCreator={getUsersThunkCreator}
+          setIsLoaded={setUsersIsLoaded}
+        />
       </div>
     </div>
 )}
 
 const getData = (state) => ({
   posts: posts(state),
-  postsIsLoaded: postsIsLoaded(state),
   comments: comments(state),
-  commentsIsLoaded: commentsIsLoaded(state),
   users: users(state),
   usersIsLoaded: usersIsLoaded(state),
   pathname: state.router.location.pathname,

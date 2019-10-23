@@ -8,33 +8,46 @@ const setPosts = value => ({ type: SET_POSTS, value });
 const setComments = value => ({ type: SET_COMMENTS, value });
 const setUsers = value => ({ type: SET_USERS, value });
 
-export const getPostsThunkCreator = () => (dispatch) => {
+export const getPostsThunkCreator = isLoadingCB => dispatch => {
+  isLoadingCB(false);
+
   getPosts()
     .then(posts => setTimeout(() => {
+        isLoadingCB(true)
         dispatch(setPosts(posts))
       }, 1000))
     .catch(() => dispatch(setPosts([])));
 };
 
-export const getfilteredPostsThunkCreator = (searchvalue) => (dispatch) => {
-  getFilteredPosts(searchvalue)
-    .then(filteredPosts => setTimeout(() => {
-        dispatch(setPosts(filteredPosts))
-      }, 300))
-    .catch(() => dispatch(setPosts([])));
+export const getfilteredPostsThunkCreator = (searchvalue, isLoadingCB) =>
+  dispatch => {
+    isLoadingCB(false);
+
+    getFilteredPosts(searchvalue)
+      .then(filteredPosts => setTimeout(() => {
+          isLoadingCB(true)
+          dispatch(setPosts(filteredPosts))
+        }, 300))
+      .catch(() => dispatch(setPosts([])));
 };
 
-export const getCommentsThunkCreator = () => (dispatch) => {
+export const getCommentsThunkCreator = isLoadingCB => dispatch => {
+  isLoadingCB(false);
+
   getComments()
     .then(comments => setTimeout(() => {
+        isLoadingCB(true)
         dispatch(setComments(comments))
       }, 3000))
     .catch(() => []);
 };
 
-export const getUsersThunkCreator = () => (dispatch) => {
+export const getUsersThunkCreator = isLoadingCB => dispatch => {
+  isLoadingCB(false);
+
   getUsers()
     .then(users => setTimeout(() => {
+        isLoadingCB(true)
         dispatch(setUsers(users))
       }, 2000))
     .catch(() => []);
