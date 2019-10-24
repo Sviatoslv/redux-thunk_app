@@ -1,8 +1,8 @@
-import {SET_COMMENTS} from '../actionCreators';
+import {SET_COMMENTS, SET_COMMENTS_ISLOADING} from '../actionCreators';
 
 const initialState = {
   comments: [],
-  commentsIsLoaded: false,
+  commentsIsLoading: false,
 };
 
 export const commentsReducer = (state = initialState, action) => {
@@ -11,7 +11,12 @@ export const commentsReducer = (state = initialState, action) => {
       return ({
         ...state,
         comments: action.value,
-        commentsIsLoaded: true,
+      });
+
+    case SET_COMMENTS_ISLOADING:
+      return ({
+        ...state,
+        commentsIsLoading: action.value,
       });
 
     default:

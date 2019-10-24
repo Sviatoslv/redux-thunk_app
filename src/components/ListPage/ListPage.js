@@ -5,22 +5,22 @@ import {
   getPostsThunkCreator,
   getfilteredPostsThunkCreator,
 } from '../../store/actionCreators';
-import { posts, postsIsLoaded } from '../../store/store';
+import { posts, postsIsLoading } from '../../store/store';
 
 import List from '../List/List';
 import PathViewer from '../PathViewer/PathViewer';
 
 const ListPage = ({
     posts=[],
+    postsIsLoading,
     getPostsThunkCreator,
     getfilteredPostsThunkCreator,
     pathname,
   }) => {
   const [queryValue, setQueryValue] = useState('');
-  const [isLoaded, setIsLoaded] = useState('');
 
   useEffect(() => {
-    getPostsThunkCreator(setIsLoaded);
+    getPostsThunkCreator();
   }, []);
 
   return (
@@ -35,7 +35,7 @@ const ListPage = ({
           value={queryValue}
           onChange={(event) => {
             setQueryValue(event.target.value);
-            getfilteredPostsThunkCreator(event.target.value, setIsLoaded);
+            getfilteredPostsThunkCreator(event.target.value);
           }}
         />
         
@@ -43,9 +43,8 @@ const ListPage = ({
 
         <List
           list={posts}
-          isLoaded={isLoaded}
+          isLoading={postsIsLoading}
           getThunkCreator={getPostsThunkCreator}
-          setIsLoaded={setIsLoaded}
         />
       </div>
     </div>
@@ -53,7 +52,7 @@ const ListPage = ({
 
 const getData = (state) => ({
   posts: posts(state),
-  postsIsLoaded: postsIsLoaded(state),
+  postsIsLoading: postsIsLoading(state),
   pathname: state.router.location.pathname,
 });
 

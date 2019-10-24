@@ -1,8 +1,8 @@
-import {SET_USERS} from '../actionCreators';
+import {SET_USERS, SET_USERS_ISLOADING} from '../actionCreators';
 
 const initialState = {
   users: [],
-  usersIsLoaded: false,
+  usersIsLoading: false,
 };
 
 export const usersReducer = (state = initialState, action) => {
@@ -11,7 +11,12 @@ export const usersReducer = (state = initialState, action) => {
       return ({
         ...state,
         users: action.value,
-        usersIsLoaded: true,
+      });
+    
+    case SET_USERS_ISLOADING:
+      return ({
+        ...state,
+        usersIsLoading: action.value,
       });
 
     default:
