@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import {
@@ -9,11 +9,11 @@ import {
 
 import {
   posts,
-  postsIsLoaded,
-  comments,
-  commentsIsLoaded,
   users,
-  usersIsLoaded
+  comments,
+  postsIsLoading,
+  usersIsLoading,
+  commentsIsLoading,
 } from '../../store/store';
 
 import './LandingPage.css';
@@ -24,19 +24,19 @@ const LandingPage = ({
     posts=[],
     comments=[],
     users=[],
+    postsIsLoading,
+    usersIsLoading,
+    commentsIsLoading,
     getPostsThunkCreator,
     getCommentsThunkCreator,
     getUsersThunkCreator,
     pathname,
   }) => {
-  const [postsIsLoaded, setPostsIsLoaded] = useState('');
-  const [commentsIsLoaded, setCommentsIsLoaded] = useState('');
-  const [usersIsLoaded, setUsersIsLoaded] = useState('');
 
   useEffect(() => {
-    getPostsThunkCreator(setPostsIsLoaded);
-    getCommentsThunkCreator(setCommentsIsLoaded);
-    getUsersThunkCreator(setUsersIsLoaded);
+    getPostsThunkCreator();
+    getCommentsThunkCreator();
+    getUsersThunkCreator();
   }, []);
 
   return (
@@ -48,23 +48,20 @@ const LandingPage = ({
       <div className='lists'>
         <List
           list={posts}
-          isLoaded={postsIsLoaded}
+          isLoading={postsIsLoading}
           getThunkCreator={getPostsThunkCreator}
-          setIsLoaded={setPostsIsLoaded}
         />
 
         <List
           list={comments}
-          isLoaded={commentsIsLoaded}
+          isLoading={commentsIsLoading}
           getThunkCreator={getCommentsThunkCreator}
-          setIsLoaded={setCommentsIsLoaded}
         />
 
         <List
           list={users}
-          isLoaded={usersIsLoaded}
+          isLoading={usersIsLoading}
           getThunkCreator={getUsersThunkCreator}
-          setIsLoaded={setUsersIsLoaded}
         />
       </div>
     </div>
@@ -72,9 +69,11 @@ const LandingPage = ({
 
 const getData = (state) => ({
   posts: posts(state),
-  comments: comments(state),
   users: users(state),
-  usersIsLoaded: usersIsLoaded(state),
+  comments: comments(state),
+  postsIsLoading: postsIsLoading(state),
+  usersIsLoading: usersIsLoading(state),
+  commentsIsLoading: commentsIsLoading(state),
   pathname: state.router.location.pathname,
 });
 

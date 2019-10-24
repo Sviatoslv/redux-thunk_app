@@ -10,11 +10,12 @@ import { commentsReducer } from './reducers/commentsReducer';
 import { usersReducer } from './reducers/usersReducer';
 
 export const posts = ({ postsList }) => postsList.posts;
-export const postsIsLoaded = ({ postsList }) => postsList.postsIsLoaded;
-export const comments = ({ commentsList }) => commentsList.comments;
-export const commentsIsLoaded = ({ commentsList }) => commentsList.commentsIsLoaded;
 export const users = ({ usersList }) => usersList.users;
-export const usersIsLoaded = ({ usersList }) => usersList.usersIsLoaded;
+export const comments = ({ commentsList }) => commentsList.comments;
+
+export const postsIsLoading = ({ postsList }) => postsList.postsIsLoading;
+export const usersIsLoading = ({ usersList }) => usersList.usersIsLoading;
+export const commentsIsLoading = ({ commentsList }) => commentsList.commentsIsLoading;
 
 export const history = createBrowserHistory();
 

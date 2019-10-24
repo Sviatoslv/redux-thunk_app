@@ -1,16 +1,16 @@
 import React from 'react';
 import './List.css';
 
-const List = ({ list=[], isLoaded, getThunkCreator, setIsLoaded }) => (
+const List = ({ list=[], isLoading, getThunkCreator }) => (
   <div className="List">
-    <button onClick={() => {getThunkCreator(setIsLoaded)}}>Refresh</button>
+    <button onClick={() => {getThunkCreator()}}>Refresh</button>
 
     {
-      !isLoaded
+      isLoading
         && <div className="loader">Loading...</div>
     }
     {
-      isLoaded
+      !isLoading
         && list.length
         && <ul>
               {list.map(item =>
@@ -20,7 +20,7 @@ const List = ({ list=[], isLoaded, getThunkCreator, setIsLoaded }) => (
             </ul>
     }
     {
-      isLoaded
+      !isLoading
         && !list.length
         && <p>Something went wrong...</p>
     }

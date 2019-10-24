@@ -1,8 +1,8 @@
-import {SET_POSTS} from '../actionCreators';
+import {SET_POSTS, SET_POSTS_ISLOADING} from '../actionCreators';
 
 const initialState = {
   posts: [],
-  postsIsLoaded: false,
+  postsIsLoading: false,
 };
 
 export const postsReducer = (state = initialState, action) => {
@@ -11,7 +11,12 @@ export const postsReducer = (state = initialState, action) => {
       return ({
         ...state,
         posts: action.value,
-        postsIsLoaded: true,
+      });
+
+    case SET_POSTS_ISLOADING:
+      return ({
+        ...state,
+        postsIsLoading: action.value,
       });
 
     default:
